@@ -21,9 +21,7 @@
         <tr>
             <td>${item.categoryID}</td>
             <td>${item.name}</td>
-            <td>
-            <fmt:parseDate value = "${item.localDateTime}" var= "parsedDate" pattern="dd-MM-yyyy" />
-            </td>
+            <td>${item.localDateTime}</td>
 <%--            <td>${item.localDateTime}</td>--%>
         </tr>
     </c:forEach>
