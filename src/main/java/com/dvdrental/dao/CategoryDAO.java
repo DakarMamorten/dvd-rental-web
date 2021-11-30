@@ -27,7 +27,7 @@ public class CategoryDAO implements AbstractDAO<Category> {
                     Category category = new Category();
                     category.setCategoryID(resultSet.getInt(1));
                     category.setName(resultSet.getString(2));
-                    category.setLocalDateTime(DateUtil.convertDate(resultSet.getString(3),DateUtil.DATE_TIME_FORMAT,DateUtil.DATE_PAGE_FORMAT));
+                    category.setLastUpdate(DateUtil.convertDate(resultSet.getString(3),DateUtil.DATE_TIME_FORMAT,DateUtil.DATE_PAGE_FORMAT));
                     categories.add(category);
                 }
             }
@@ -47,7 +47,7 @@ public class CategoryDAO implements AbstractDAO<Category> {
                 resultSet.next();
                 category.setCategoryID(resultSet.getInt(1));
                 category.setName(resultSet.getString(2));
-                category.setLocalDateTime(DateUtil.convertDate(resultSet.getString(3),DateUtil.DATE_TIME_FORMAT,DateUtil.DATE_TIME_FORMAT));
+                category.setLastUpdate(DateUtil.convertDate(resultSet.getString(3),DateUtil.DATE_TIME_FORMAT,DateUtil.DATE_TIME_FORMAT));
             }
         } catch (SQLException exception) {
             LOGGER.error("Error: " + exception.getMessage());

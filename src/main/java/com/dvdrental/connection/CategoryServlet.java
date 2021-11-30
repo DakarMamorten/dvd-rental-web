@@ -1,6 +1,6 @@
 package com.dvdrental.connection;
 
-import com.dvdrental.dao.CategoryDAO;
+import com.dvdrental.dao.CategoryHibernateDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +12,7 @@ import java.io.IOException;
 
 @WebServlet(name = "CategoryServlet", urlPatterns = "/category")
 public class CategoryServlet extends HttpServlet {
-    CategoryDAO category = new CategoryDAO();
+    private static final CategoryHibernateDAO category = new CategoryHibernateDAO();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

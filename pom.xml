@@ -13,12 +13,14 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
-        <lombok.version>1.18.20</lombok.version>
+        <lombok.version>1.18.22</lombok.version>
         <log4j.version>1.2.17</log4j.version>
-        <postgresql.version>42.2.23</postgresql.version>
+        <postgresql.version>42.3.1</postgresql.version>
         <httpclient.version>4.5.13</httpclient.version>
         <jstl.version>1.2</jstl.version>
         <flyway.version>8.1.0</flyway.version>
+        <hibernate.version>5.6.1.Final</hibernate.version>
+        <apache.version>3.12.0</apache.version>
     </properties>
 
     <dependencies>
@@ -61,6 +63,18 @@
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
             <version>${flyway.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${apache.version}</version>
         </dependency>
 
 
