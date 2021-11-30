@@ -18,6 +18,7 @@
         <postgresql.version>42.2.23</postgresql.version>
         <httpclient.version>4.5.13</httpclient.version>
         <jstl.version>1.2</jstl.version>
+        <flyway.version>8.1.0</flyway.version>
     </properties>
 
     <dependencies>
@@ -56,6 +57,27 @@
             <version>${httpclient.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flyway.version}</version>
+        </dependency>
+
+
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>${flyway.version}</version>
+                <configuration>
+                    <url>jdbc:postgresql://127.0.0.1:5432/dvd-rental-web</url>
+                    <user>postgres</user>
+                    <password>postgres</password>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
