@@ -1,6 +1,7 @@
 package com.dvdrental.connection;
 
 import com.dvdrental.dao.CategoryHibernateDAO;
+import com.dvdrental.dto.CategoryDTO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,13 +13,33 @@ import java.io.IOException;
 
 @WebServlet(name = "CategoryServlet", urlPatterns = "/category")
 public class CategoryServlet extends HttpServlet {
-    private static final CategoryHibernateDAO category = new CategoryHibernateDAO();
+	private static final CategoryHibernateDAO categoryDAO = new CategoryHibernateDAO();
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
 
-        req.setAttribute("category", category.findAll());
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/category.jsp");
-        dispatcher.forward(req, resp);
+		req.setAttribute("category", categoryDAO.findAll());
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/category.jsp");
+		try {
+			dispatcher.forward(req, resp);
+		}
+		catch (ServletException | IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp){
+		String categoryName = req.getParameter("categoryName");
+		CategoryDTO category = new CategoryDTO(categoryName);
+		categoryDAO.save(category);
+        try{
+            resp.sendRedirect("/dvd-rental/category");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

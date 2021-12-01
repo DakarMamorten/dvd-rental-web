@@ -1,48 +1,83 @@
 package com.dvdrental.dao;
 
+import com.dvdrental.dto.CategoryDTO;
 import com.dvdrental.model.Category;
+import com.dvdrental.util.DateUtil;
 import com.dvdrental.util.HibernateUtil;
 import lombok.SneakyThrows;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author Sergey Manko
  */
-public class CategoryHibernateDAO implements AbstractDAO<Category> {
+
+public class CategoryHibernateDAO implements AbstractDAO<CategoryDTO> {
 	@SneakyThrows
 	@Override
-	public List<Category> findAll() {
-		List<Category> categories = new ArrayList<>();
+	public List<CategoryDTO> findAll() {
+
+		List<CategoryDTO> result = new ArrayList<>();
 		final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		final Session session = sessionFactory.getCurrentSession();
 		try{
 			final Transaction transaction = session.beginTransaction();
-			categories.addAll( session.createQuery("SELECT c FROM Category c", Category.class).getResultList());
+			List<Category> categories = new ArrayList<>(
+					session.createQuery("SELECT c FROM Category c", Category.class).getResultList());
 			transaction.commit();
+			for (Category category : categories) {
+				final CategoryDTO categoryDTO = convertEntityToDto(category);
+				result.add(categoryDTO);
+			}
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		return categories;
+		return result;
 	}
 
 	@Override
-	public Category findById(Long id) {
+	public CategoryDTO findById(Long id) {
 		return null;
 	}
 
 	@Override
 	public void deleteById(Long id) {
+		//TODO implement delete category
+	}
 
+	public CategoryDTO convertEntityToDto(Category category){
+		CategoryDTO categoryDTO = new CategoryDTO();
+		categoryDTO.setCategoryID(category.getCategoryID());
+		categoryDTO.setName(category.getName());
+		categoryDTO.setLastUpdate(DateUtil.convertDateToString(category.getLastUpdate(),DateUtil.DATE_PAGE_FORMAT));
+		return categoryDTO;
 	}
 
 	@Override
-	public void save(Category entity) {
+	public void save(CategoryDTO categoryDTO) {
+		final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		final Session session = sessionFactory.getCurrentSession();
+		try{
+			final Transaction transaction = session.beginTransaction();
+			session.save(convertDTOFromEntity(categoryDTO));
+			transaction.commit();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
+	private Category convertDTOFromEntity(CategoryDTO categoryDTO){
+		Category category = new Category();
+		category.setCategoryID(categoryDTO.getCategoryID());
+		category.setName(categoryDTO.getName());
+		category.setLastUpdate(LocalDateTime.now());
+		return category;
 	}
 }
