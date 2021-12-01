@@ -12,6 +12,7 @@ import org.hibernate.Transaction;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Sergey Manko
@@ -30,10 +31,9 @@ public class CategoryHibernateDAO implements AbstractDAO<CategoryDTO> {
 			List<Category> categories = new ArrayList<>(
 					session.createQuery("SELECT c FROM Category c", Category.class).getResultList());
 			transaction.commit();
-			for (Category category : categories) {
-				final CategoryDTO categoryDTO = convertEntityToDto(category);
-				result.add(categoryDTO);
-			}
+			result = categories.stream()
+					.map(this::convertEntityToDto)
+					.collect(Collectors.toList());
 		}
 		catch (Exception e) {
 			e.printStackTrace();
