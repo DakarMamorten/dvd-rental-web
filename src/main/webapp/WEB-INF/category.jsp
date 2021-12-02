@@ -21,7 +21,7 @@
         <tr>
             <td>${item.categoryID}</td>
             <td>${item.name}</td>
-            <td>${item.localDateTime}</td>
+            <td>${item.lastUpdate}</td>
 <%--            <td>${item.localDateTime}</td>--%>
         </tr>
     </c:forEach>
@@ -29,12 +29,9 @@
 </table>
 <div>
     <form action="${pageContext.request.contextPath}/category" method="post">
-        <label for="categoryId">categoryId:</label>
-        <input type="text" id = "categoryId" idCat = "categoryId"><br><br>
-        <label for="nameId">Name:</label>
-        <input type="text" id="nameId" name="categoryName"><br><br>
-        <label for="localDateTime">Name:</label>
-        <input type="text" id="localDateTime" name="localDateTime"><br><br>
+        <label for="categoryName">Name:</label>
+        <input type="text" id="categoryName" name="categoryName"><br><br>
+        <button type="submit">Add</button>
     </form>
 </div>
 </body>
