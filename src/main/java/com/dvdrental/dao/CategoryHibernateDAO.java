@@ -48,7 +48,18 @@ public class CategoryHibernateDAO implements AbstractDAO<CategoryDTO> {
 
 	@Override
 	public void deleteById(Long id) {
-		//TODO implement delete category
+		final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		final Session session = sessionFactory.getCurrentSession();
+		try{
+			final Transaction transaction = session.beginTransaction();
+			Category category = new Category();
+			category.setCategoryID(id);
+			session.delete(category);
+			transaction.commit();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public CategoryDTO convertEntityToDto(Category category){

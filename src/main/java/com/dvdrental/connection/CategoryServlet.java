@@ -13,12 +13,12 @@ import java.io.IOException;
 
 @WebServlet(name = "CategoryServlet", urlPatterns = "/category")
 public class CategoryServlet extends HttpServlet {
-	private static final CategoryHibernateDAO categoryDAO = new CategoryHibernateDAO();
+	private static final CategoryHibernateDAO categoryHibernateDAO = new CategoryHibernateDAO();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
 
-		req.setAttribute("category", categoryDAO.findAll());
+		req.setAttribute("category", categoryHibernateDAO.findAll());
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/category.jsp");
 		try {
 			dispatcher.forward(req, resp);
@@ -33,7 +33,7 @@ public class CategoryServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp){
 		String categoryName = req.getParameter("categoryName");
 		CategoryDTO category = new CategoryDTO(categoryName);
-		categoryDAO.save(category);
+		categoryHibernateDAO.save(category);
         try{
             resp.sendRedirect("/dvd-rental/category");
         }
