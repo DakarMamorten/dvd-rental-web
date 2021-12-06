@@ -1,6 +1,6 @@
-package com.dvdrental.connection;
+package com.dvdrental.connection.categoryServlet;
 
-import com.dvdrental.dao.CategoryHibernateDAO;
+import com.dvdrental.dao.categoryDAO.CategoryHibernateDAO;
 import com.dvdrental.dto.CategoryDTO;
 
 import javax.servlet.RequestDispatcher;
@@ -17,7 +17,6 @@ public class CategoryServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-
 		req.setAttribute("category", categoryHibernateDAO.findAll());
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/category.jsp");
 		try {

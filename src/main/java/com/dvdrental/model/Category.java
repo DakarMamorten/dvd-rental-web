@@ -17,7 +17,7 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
-    private long categoryID;
+    private long categoryId;
     private String name;
     @Column(name = "last_update")
     private LocalDateTime lastUpdate;

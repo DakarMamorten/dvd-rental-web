@@ -1,6 +1,7 @@
-package com.dvdrental.dao;
+package com.dvdrental.dao.filmDAO;
 
 import com.dvdrental.connection.DBConnectionSingleton;
+import com.dvdrental.dao.AbstractDAO;
 import com.dvdrental.model.FilmCategory;
 import org.apache.log4j.Logger;
 
