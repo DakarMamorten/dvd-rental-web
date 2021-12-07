@@ -23,7 +23,7 @@
 
         <c:forEach items="${requestScope.address}" var="item">
             <tr>
-                <td>${item.addressID}</td>
+                <td>${item.addressId}</td>
                 <td>${item.address}</td>
                 <td>${item.address2}</td>
                 <td>${item.district}</td>

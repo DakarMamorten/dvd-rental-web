@@ -16,7 +16,9 @@ public class Address {
     private String address;
     private String address2;
     private String district;
+    @Column(name = "city_id")
     private int cityId;
+    @Column(name= "postal_code")
     private String postelCode;
     private String phone;
     @Column(name = "last_update")

@@ -1,5 +1,6 @@
 package com.dvdrental.util;
 
+import com.dvdrental.model.Address;
 import com.dvdrental.model.Category;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -35,6 +36,7 @@ public class HibernateUtil {
 			MetadataSources metadataSources = new MetadataSources(serviceRegistry);
 
 			metadataSources.addAnnotatedClass(Category.class);
+			metadataSources.addAnnotatedClass(Address.class);
 			Metadata metadata = metadataSources.getMetadataBuilder()
 					.applyBasicType(LocalDateStringType.INSTANCE)
 					.build();
@@ -42,6 +44,7 @@ public class HibernateUtil {
 		} catch (IOException ex) {
 			throw new ExceptionInInitializerError(ex);
 		}
+
 	}
 
 
