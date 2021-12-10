@@ -28,9 +28,9 @@ public class AddressByIdServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp){
         Long addressId = Long.parseLong((req.getParameter("addressId")));
-        AddressDTO addressDTO =addressHibernateDAO.findById(addressId);
+        AddressDTO addressDTO  = addressHibernateDAO.findById(addressId);
         req.setAttribute("address",addressDTO);
         try{
             RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/addressById.jsp");

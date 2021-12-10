@@ -16,7 +16,7 @@ public class AddressServlet  extends HttpServlet {
     public static final AddressHibernateDAO addressHibernateDAO = new AddressHibernateDAO();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp){
         req.setAttribute("address",addressHibernateDAO.findAll());
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/address.jsp");
         try {
@@ -28,9 +28,15 @@ public class AddressServlet  extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String addressName = req.getParameter("addressId");
-        AddressDTO addressDTO = new AddressDTO(addressName);
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp){
+         String address = req.getParameter("address");
+         String address2 = req.getParameter("address2");
+         String district = req.getParameter("district");
+         int cityId = Integer.parseInt(req.getParameter("cityId"));
+         String postalCode = req.getParameter("postalCode");
+         String phone = req.getParameter("phone");
+        AddressDTO addressDTO = new AddressDTO(address,address2,district,cityId,postalCode,phone);
+
         addressHibernateDAO.save(addressDTO);
         try{
             resp.sendRedirect("/dvd-rental/address");

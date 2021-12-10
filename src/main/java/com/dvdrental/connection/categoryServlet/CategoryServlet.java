@@ -31,8 +31,8 @@ public class CategoryServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp){
 		String categoryName = req.getParameter("categoryName");
-		CategoryDTO category = new CategoryDTO(categoryName);
-		categoryHibernateDAO.save(category);
+		CategoryDTO categoryDTO = new CategoryDTO(categoryName);
+		categoryHibernateDAO.save(categoryDTO);
         try{
             resp.sendRedirect("/dvd-rental/category");
         }

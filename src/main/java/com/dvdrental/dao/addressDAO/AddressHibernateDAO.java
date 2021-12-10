@@ -72,7 +72,7 @@ public class AddressHibernateDAO implements AbstractDAO<AddressDTO> {
         final Session session = sessionFactory.getCurrentSession();
         try {
             final Transaction transaction = session.beginTransaction();
-            session.save(convertDTOFromEntity(addressDTO));
+            session.save(convertDTOToEntity(addressDTO));
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -93,7 +93,7 @@ public class AddressHibernateDAO implements AbstractDAO<AddressDTO> {
         return addressDTO;
     }
 
-    private Address convertDTOFromEntity(AddressDTO addressDTO) {
+    private Address convertDTOToEntity(AddressDTO addressDTO) {
         Address address = new Address();
         address.setAddressId(addressDTO.getAddressId());
         address.setAddress(addressDTO.getAddress());

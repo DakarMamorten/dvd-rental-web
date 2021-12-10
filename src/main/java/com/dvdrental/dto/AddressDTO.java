@@ -18,4 +18,13 @@ public class AddressDTO {
     public AddressDTO(String lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
+
+    public AddressDTO(String address, String address2, String district, int cityId, String postelCode, String phone) {
+        this.address = address;
+        this.address2 = address2;
+        this.district = district;
+        this.cityId = cityId;
+        this.postelCode = postelCode;
+        this.phone = phone;
+    }
 }
