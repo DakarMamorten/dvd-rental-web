@@ -24,12 +24,12 @@ public class AddressHibernateDAO implements AbstractDAO<AddressDTO> {
         final Session session = sessionFactory.getCurrentSession();
         try {
             final Transaction transaction = session.beginTransaction();
-            List<Address> addresses = new ArrayList<>(
-                    session.createQuery("SELECT a FROM  Address a", Address.class).getResultList());
-            transaction.commit();
-            result = addresses.stream()
+            result.addAll(session.createQuery("SELECT a FROM  Address a ", Address.class)
+                    .getResultStream()
+                    .limit(15)
                     .map(this::convertEntityToDto)
-                    .collect(Collectors.toList());
+                    .collect(Collectors.toList()));
+                    transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
         }
