@@ -127,25 +127,24 @@ public class AddressHibernateDAO implements AbstractDAO<AddressDTO> {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		return (result.intValue() / 25) +1 ;
+		return result.intValue() % 25 == 0 ? result.intValue() / 25 : (result.intValue() / 25) + 1;
 	}
 
-
-	public List<AddressDTO> findAllByPage(int currentPage){
+	public List<AddressDTO> findAllByPage(int currentPage) {
 		final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		final Session session = sessionFactory.getCurrentSession();
 		List<Address> listAddress = new ArrayList<>();
-		try{
+		try {
 			final Transaction transaction = session.beginTransaction();
 			Query selectQuery = session.createQuery("From Address");
 			selectQuery.setFirstResult((currentPage - 1) * 25);
 			selectQuery.setMaxResults(25);
 			listAddress = selectQuery.list();
 			transaction.commit();
-		}catch (Exception exception){
+		}
+		catch (Exception exception) {
 			exception.printStackTrace();
 		}
-
 
 		return listAddress.stream()
 				.map(this::convertEntityToDto)
