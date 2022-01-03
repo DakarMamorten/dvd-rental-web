@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <html>
 <head>
     <title>Address</title>
@@ -22,7 +21,6 @@
         <th>LocalDateTime</th>
         </thead>
         <tbody>
-
         <c:forEach items="${requestScope.address}" var="item">
             <tr>
                 <td><input type="radio" id="radioButton" name="addressId" value="${item.addressId}"/></td>
@@ -39,27 +37,13 @@
         </tbody>
     </table>
     <button type="submit">Delete</button>
-
-    <!--DOCTYPE html-->
-    <html>
-
-    <head>
-        <meta charset="utf-8">
-        <link href='//fonts.googleapis.com/css?family=PT+Sans:400,700&subset=cyrillic' rel='stylesheet' type='text/css'>
-    </head>
-
-    <body>
-    <div class="paginator">
-        <a class="prev disabled" href="/dvd-rental/address">Предыдущая</a>
-        <a class="current" href="/dvd-rental/address">1</a>
-        <a class="current" href="/dvd-rental/address">2</a>
-        <a class="current" href="/dvd-rental/address">3</a>
-        <a href="/dvd-rental/address">4</a>
-        <a class="next" href="/dvd-rental/address">Следующая</a>
+    <div class="paginator" >
+        <a class="prev disabled" href="/dvd-rental/address">&laquo;</a>
+        <c:forEach begin="1" end="${requestScope.pages}" step="1" varStatus="loop">
+            <a class="current" href="${pageContext.request.contextPath}/address/page?pageNumber=${loop.index}">${loop.index}</a>
+        </c:forEach>
+        <a class="next" href="/dvd-rental/address">&raquo;</a>
     </div>
-    </body>
-
-    </html>
 </form>
 </body>
 </html>
