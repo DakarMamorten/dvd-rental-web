@@ -24,7 +24,6 @@
         <input type="text" id="phone" name="phone"><br><br>
         <button type="submit">Add</button>
     </form>
-
 </div>
 </body>
 </html>

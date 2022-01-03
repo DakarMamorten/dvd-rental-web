@@ -5,8 +5,10 @@
     <title>Main</title>
 </head>
 <body>
-<a href="/dvd-rental/address">List of Addresses</a>
-<a href="/dvd-rental/address/add">LAdd address</a>
-<a href="/dvd-rental/address/find">Find address by Id</a>
+<ul>
+    <li><a href="/dvd-rental/address">List of Addresses</a></li>
+    <li><a href="/dvd-rental/address/add">Add address</a></li>
+    <li><a href="/dvd-rental/address/find">Find address by Id</a></li>
+</ul>
 </body>
 </html>
