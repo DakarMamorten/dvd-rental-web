@@ -1,5 +1,6 @@
-package com.dvdrental.dao;
+package com.dvdrental.dao.categoryDAO;
 
+import com.dvdrental.dao.AbstractDAO;
 import com.dvdrental.dto.CategoryDTO;
 import com.dvdrental.model.Category;
 import com.dvdrental.util.DateUtil;
@@ -47,7 +48,7 @@ public class CategoryHibernateDAO implements AbstractDAO<CategoryDTO> {
         Category category = new Category();
         try {
             final Transaction transaction = session.beginTransaction();
-            category = session.createQuery("SELECT c FROM Category c WHERE c.categoryID = " + id, Category.class).getSingleResult();
+            category = session.createQuery("SELECT c FROM Category c WHERE c.categoryId = " + id, Category.class).getSingleResult();
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -62,7 +63,7 @@ public class CategoryHibernateDAO implements AbstractDAO<CategoryDTO> {
         try {
             final Transaction transaction = session.beginTransaction();
             Category category = new Category();
-            category.setCategoryID(id);
+            category.setCategoryId(id);
             session.delete(category);
             transaction.commit();
         } catch (Exception e) {
@@ -70,9 +71,9 @@ public class CategoryHibernateDAO implements AbstractDAO<CategoryDTO> {
         }
     }
 
-    public CategoryDTO convertEntityToDto(Category category) {
+    private CategoryDTO convertEntityToDto(Category category) {
         CategoryDTO categoryDTO = new CategoryDTO();
-        categoryDTO.setCategoryID(category.getCategoryID());
+        categoryDTO.setCategoryID(category.getCategoryId());
         categoryDTO.setName(category.getName());
         categoryDTO.setLastUpdate(DateUtil.convertDateToString(category.getLastUpdate(), DateUtil.DATE_PAGE_FORMAT));
         return categoryDTO;
@@ -93,7 +94,7 @@ public class CategoryHibernateDAO implements AbstractDAO<CategoryDTO> {
 
     private Category convertDTOFromEntity(CategoryDTO categoryDTO) {
         Category category = new Category();
-        category.setCategoryID(categoryDTO.getCategoryID());
+        category.setCategoryId(categoryDTO.getCategoryID());
         category.setName(categoryDTO.getName());
         category.setLastUpdate(LocalDateTime.now());
         return category;

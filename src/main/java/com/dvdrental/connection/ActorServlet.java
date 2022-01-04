@@ -22,17 +22,15 @@ public class ActorServlet extends HttpServlet {
         //Get parameter `name` from request
         if (name == null) {
             req.setAttribute("actors", ActorService.finAll());
-
         } else {
             req.setAttribute("actors", actorService.findByName(name));
-
         }
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/actors.jsp");
         dispatcher.forward(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String name = req.getParameter("actorName");
         int age = Integer.parseInt(req.getParameter("actorAge"));
 

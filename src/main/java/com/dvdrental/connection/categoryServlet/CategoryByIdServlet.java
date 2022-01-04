@@ -1,6 +1,6 @@
-package com.dvdrental.connection;
+package com.dvdrental.connection.categoryServlet;
 
-import com.dvdrental.dao.CategoryHibernateDAO;
+import com.dvdrental.dao.categoryDAO.CategoryHibernateDAO;
 import com.dvdrental.dto.CategoryDTO;
 
 import javax.servlet.RequestDispatcher;

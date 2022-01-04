@@ -1,6 +1,6 @@
-package com.dvdrental.connection;
+package com.dvdrental.connection.categoryServlet;
 
-import com.dvdrental.dao.CategoryHibernateDAO;
+import com.dvdrental.dao.categoryDAO.CategoryHibernateDAO;
 import com.dvdrental.dto.CategoryDTO;
 
 import javax.servlet.RequestDispatcher;
@@ -17,7 +17,6 @@ public class CategoryServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-
 		req.setAttribute("category", categoryHibernateDAO.findAll());
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/category.jsp");
 		try {
@@ -32,8 +31,8 @@ public class CategoryServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp){
 		String categoryName = req.getParameter("categoryName");
-		CategoryDTO category = new CategoryDTO(categoryName);
-		categoryHibernateDAO.save(category);
+		CategoryDTO categoryDTO = new CategoryDTO(categoryName);
+		categoryHibernateDAO.save(categoryDTO);
         try{
             resp.sendRedirect("/dvd-rental/category");
         }

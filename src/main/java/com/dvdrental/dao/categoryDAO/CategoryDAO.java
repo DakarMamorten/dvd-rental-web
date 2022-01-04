@@ -1,6 +1,7 @@
-package com.dvdrental.dao;
+package com.dvdrental.dao.categoryDAO;
 
 import com.dvdrental.connection.DBConnectionSingleton;
+import com.dvdrental.dao.AbstractDAO;
 import com.dvdrental.model.Category;
 import org.apache.log4j.Logger;
 
@@ -28,7 +29,7 @@ public class CategoryDAO implements AbstractDAO<Category> {
 				ResultSet resultSet = preparedStatement.executeQuery();
 				while (resultSet.next()) {
 					Category category = new Category();
-					category.setCategoryID(resultSet.getInt(1));
+					category.setCategoryId(resultSet.getInt(1));
 					category.setName(resultSet.getString(2));
 					category.setLastUpdate(
 							LocalDateTime.parse(resultSet.getString(3),
@@ -51,7 +52,7 @@ public class CategoryDAO implements AbstractDAO<Category> {
 			try (PreparedStatement statement = connection.prepareStatement(sql)) {
 				ResultSet resultSet = statement.executeQuery();
 				resultSet.next();
-				category.setCategoryID(resultSet.getInt(1));
+				category.setCategoryId(resultSet.getInt(1));
 				category.setName(resultSet.getString(2));
 				category.setLastUpdate(
 						LocalDateTime.parse(resultSet.getString(3),
