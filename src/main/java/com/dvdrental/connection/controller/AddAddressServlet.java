@@ -1,6 +1,6 @@
 package com.dvdrental.connection.controller;
 
-import com.dvdrental.dao.addressDAO.AddressHibernateDAO;
+import com.dvdrental.dao.address.AddressHibernateDAO;
 import com.dvdrental.dto.AddressDTO;
 
 import javax.servlet.RequestDispatcher;

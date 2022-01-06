@@ -1,4 +1,4 @@
-package com.dvdrental.dao.categoryDAO;
+package com.dvdrental.dao.category;
 
 import com.dvdrental.dao.AbstractDAO;
 import com.dvdrental.dto.CategoryDTO;

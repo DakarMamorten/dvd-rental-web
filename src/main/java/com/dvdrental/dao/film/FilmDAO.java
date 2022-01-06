@@ -1,4 +1,4 @@
-package com.dvdrental.dao.filmDAO;
+package com.dvdrental.dao.film;
 
 import com.dvdrental.connection.DBConnectionSingleton;
 import com.dvdrental.dao.AbstractDAO;

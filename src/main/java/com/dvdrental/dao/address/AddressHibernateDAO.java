@@ -1,4 +1,4 @@
-package com.dvdrental.dao.addressDAO;
+package com.dvdrental.dao.address;
 
 import com.dvdrental.dao.AbstractDAO;
 import com.dvdrental.dto.AddressDTO;

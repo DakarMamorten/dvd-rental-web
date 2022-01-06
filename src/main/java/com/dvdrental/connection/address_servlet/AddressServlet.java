@@ -1,6 +1,6 @@
-package com.dvdrental.connection.addressServlet;
+package com.dvdrental.connection.address_servlet;
 
-import com.dvdrental.dao.addressDAO.AddressHibernateDAO;
+import com.dvdrental.dao.address.AddressHibernateDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
