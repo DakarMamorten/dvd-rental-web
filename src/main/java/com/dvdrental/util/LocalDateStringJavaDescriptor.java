@@ -7,9 +7,6 @@ import org.hibernate.type.descriptor.java.ImmutableMutabilityPlan;
 
 import java.time.LocalDate;
 
-/**
- * @author Sergey Manko
- */
 public class LocalDateStringJavaDescriptor extends AbstractTypeDescriptor<LocalDate> {
 
 	public static final LocalDateStringJavaDescriptor INSTANCE = new LocalDateStringJavaDescriptor();

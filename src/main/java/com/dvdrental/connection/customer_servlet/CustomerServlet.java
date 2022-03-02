@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * @author Sergey Manko
- */
+
 @WebServlet(urlPatterns = "/customer/list")
 public class CustomerServlet extends HttpServlet {
 	final CustomerHibernateDAO customerHibernateDAO = new CustomerHibernateDAO();
@@ -21,6 +19,8 @@ public class CustomerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setAttribute("customer",customerHibernateDAO.findAll());
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/customer/list.jsp");
+		int pages = customerHibernateDAO.countPages();
+		req.setAttribute("pages", pages);
 		try {
 			dispatcher.forward(req, resp);
 		}

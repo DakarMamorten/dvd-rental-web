@@ -1,5 +1,6 @@
 package com.dvdrental.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -7,11 +8,10 @@ import javax.persistence.Column;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-/**
- * @author Sergey Manko
- */
+
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class CustomerDTO {
 	private long customerId;
 	@Column(name = "stored_id")
@@ -30,4 +30,13 @@ public class CustomerDTO {
 	private LocalDateTime lastUpdate;
 	private long active;
 
+	public CustomerDTO(long storeId, String firstName, String lastName, String email, long addressId, boolean activebool, long active) {
+		this.storeId = storeId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.addressId = addressId;
+		this.activebool = activebool;
+		this.active = active;
+	}
 }

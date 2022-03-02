@@ -1,6 +1,7 @@
 package com.dvdrental.connection.customer_servlet;
 
 import com.dvdrental.dao.customer.CustomerHibernateDAO;
+import com.dvdrental.dto.CustomerDTO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,9 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * @author Sergey Manko
- */@WebServlet(urlPatterns = "/dvd-rental/customer/add")
+
+@WebServlet(urlPatterns = "/dvd-rental/customer/add")
 public class CustomAddServlet extends HttpServlet {
 	 CustomerHibernateDAO customerHibernateDAO = new CustomerHibernateDAO();
 	@Override
@@ -35,9 +35,8 @@ public class CustomAddServlet extends HttpServlet {
 		int addressId = Integer.parseInt(req.getParameter("addressId"));
 		boolean activebool = Boolean.parseBoolean(req.getParameter("activebool"));
 		int active = Integer.parseInt(req.getParameter("active"));
-//		CustomerDTO customerDTO = new CustomerDTO(storeId,firstName,lastName,email,addressId,activebool,active);
-
-//		customerHibernateDAO.save(customerDTO);
+		CustomerDTO customerDTO = new CustomerDTO(storeId,firstName,lastName,email,addressId,activebool,active);
+		customerHibernateDAO.save(customerDTO);
 
 		try{
 			resp.sendRedirect("/dvd-rental/customer/add");

@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * @author Sergey Manko
- */
+
 @WebServlet("/address/page")
 public class PageServlet extends HttpServlet {
 	public static final AddressHibernateDAO addressHibernateDAO = new AddressHibernateDAO();

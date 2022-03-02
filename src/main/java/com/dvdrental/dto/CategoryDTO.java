@@ -3,9 +3,7 @@ package com.dvdrental.dto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * @author Sergey Manko
- */
+
 @Data
 @NoArgsConstructor
 public class CategoryDTO {

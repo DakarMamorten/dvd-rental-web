@@ -24,7 +24,7 @@
         <tbody>
         <c:forEach items="${requestScope.customer}" var="item">
             <tr>
-                <td><input type="radioButtom" name="customerId" value="${item.customerId}"></td>
+                <td><input type="radio" name="customerId" value="${item.customerId}"></td>
                 <td>${item.customerId}</td>
                 <td>${item.storeId}</td>
                 <td>${item.firstName}</td>
@@ -40,26 +40,16 @@
         </tbody>
     </table>
     <button type="submit">Delete</button>
-</form>
-<div>
 
-    <form action="${pageContext.request.contextPath}/customer" method="post">
-        <label for="storeID">StoreId</label>
-        <input type="text" id="storeID" name="store"><br><br>
-        <label for="firstName">First Name</label>
-        <input type="text" id="firstName" name="firstName"><br><br>
-        <label for="lastName">Last Name</label>
-        <input type="text" id="lastName" name="lastName"><br><br>
-        <label for="email">Email</label>
-        <input type="text" id="email" name="email"><br><br>
-        <label for="addressId">Address id:</label>
-        <input type="text" id="addressId" name="addressId"><br><br>
-        <label for="activebool">Activebool:</label>
-        <input type="text" id="activebool" name="activebool"><br><br>
-        <label for="active">Active:</label>
-        <input type="text" id="active" name="active"><br><br>
-        <button type="submit">Add</button>
-    </form>
+
+<div>
+    <a class="prev disabled" href="/dvd-rental/customer/list">&laquo;</a>
+    <c:forEach begin="1" end="${requestScope.pages}" step="1" varStatus="loop">
+        <a class="current" href="${pageContext.request.contextPath}/cusomer /page?pageNumber=${loop.index}">${loop.index}</a>
+    </c:forEach>
+    <a class="next" href="/dvd-rental/customer">&raquo;</a>
+
 </div>
+</form>
 </body>
 </html>

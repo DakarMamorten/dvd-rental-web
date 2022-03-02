@@ -14,9 +14,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-/**
- * @author Sergey Manko
- */
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity

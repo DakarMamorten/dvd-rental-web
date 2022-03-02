@@ -7,9 +7,7 @@ import org.hibernate.type.descriptor.sql.VarcharTypeDescriptor;
 
 import java.time.LocalDate;
 
-/**
- * @author Sergey Manko
- */
+
 public class LocalDateStringType extends AbstractSingleColumnStandardBasicType<LocalDate> implements
 		DiscriminatorType<LocalDate> {
 
